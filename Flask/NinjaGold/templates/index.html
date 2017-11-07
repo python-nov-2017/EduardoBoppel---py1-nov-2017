@@ -9,8 +9,6 @@
 </head>
 <body>
     
-    
-    
     <div class="header">
         <h1>Ninja Gold</h1>
         <h2>Your Gold: {{ amount }}</h2>
@@ -55,11 +53,11 @@
         </div>
 
         <h4>Activities Log:</h4>
-        <textarea name="activities" cols="400" rows="20">
-            {{ log }}
-        </textarea>
-        
-
+        <div id="log">
+            {% for i in log | reverse %}
+                <p class="{{i['class']}}">{{i['time']}}: {{i['result']}}</p>
+            {% endfor %}
+        </div>
 
  
 

@@ -9,7 +9,7 @@ def index():
     if "gold" not in session:
         session['gold'] = 0
     if "log" not in session:
-        session['log'] = "Started your gold search\n"
+        session['log'] = []
 
     return render_template("index.html", amount=session['gold'], log=session['log'])
 
@@ -21,29 +21,24 @@ def process_money():
     
     if request.form['building'] == "farm":    
         goldwon = random.randint(10, 20)
-        session['gold'] += goldwon
-        session['log'] = "\t{}: Won {} golds in the farm\n".format(time, goldwon) + session['log']
-        
+        session['log'].append( {'result': "Won {} golds in the farm".format(goldwon), 'class': "win", 'time': time} )
+       
     elif request.form['building'] == "cave":
         goldwon = random.randint(5, 10)
-        session['gold'] += goldwon
-        session['log'] = "\t{}: Won {} golds in the cave\n".format(time, goldwon) + session['log']
-        
+        session['log'].append( {'result': "Won {} golds in the cave".format(goldwon), 'class': "win", 'time': time} )
+       
     elif request.form['building'] == "house":
         goldwon = random.randint(2, 5)
-        session['gold'] += goldwon
-        session['log'] = "\t{}: Won {} golds in the house\n".format(time, goldwon) + session['log']
+        session['log'].append( {'result': "Won {} golds in the house".format(goldwon), 'class': "win", 'time': time} )
+       
     else:
-        goldwon = random.randint(0, 50)
-        earnlose = random.random()
-        if earnlose >= 0.5:
-            session['gold'] += goldwon
-            session['log'] = "\t{}: Won {} golds in the casino\n".format(time, goldwon) + session['log']
+        goldwon = random.randrange(-50, 50)
+        if goldwon >= 0:
+            session['log'].append( {'result': "Won {} golds in the house".format(goldwon), 'class': "win", 'time': time} )
         else:
-            session['gold'] -= goldwon
-            session['log'] = "\t{}: Lost {} golds in the casino\n".format(time, goldwon) + session['log']
+            session['log'].append( {'result': "Lost {} golds in the house".format(goldwon), 'class': "lose", 'time': time} )
         
-        
+    session['gold'] += goldwon
     return redirect('/')
 
 

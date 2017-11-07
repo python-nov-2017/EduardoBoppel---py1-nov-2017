@@ -19,9 +19,19 @@ body {
     margin: 20px 0;
 }
 
-textarea {
+#log {
     margin: 0px 0 0 5px;
     border: 1px solid black;
     width: 97%;
+    height: 250px;
+    overflow: scroll;
+    background-color: white;
+    
+}
+
+.win {
     color: green;
+}
+.lose {
+    color: red;
 }

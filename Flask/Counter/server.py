@@ -5,7 +5,10 @@ app.secret_key = "secretkey"
 
 @app.route('/')
 def index():
-    session['visits'] += 1
+    try:
+        session['visits'] += 1
+    except:
+        session['visits'] = 1
     return render_template("index.html")
 
 @app.route('/add', methods=["POST"])

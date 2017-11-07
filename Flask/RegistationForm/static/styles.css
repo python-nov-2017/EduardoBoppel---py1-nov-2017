@@ -1,0 +1,17 @@
+input {
+    width: 200px;
+    margin: 10px 20px;
+}
+
+input[type="submit"] {
+    width: 60px;
+    margin: 10px 200px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}

@@ -15,18 +15,14 @@ def result():
     comment = request.form['comment']
 
     if len(name) > 0 and len(comment) > 0 and len(comment) < 120:
-        print "ok"
         return render_template("success.html", name=name, location=location, language=language, comment=comment)
     
     else:
         if len(name) < 1:
-            print "name error"
             flash("Name cannot be empty")
         if len(comment) < 1:
-            print "comment short"
             flash("Comment cannot be empty")
         if len(comment) > 120:
-            print "comment long"
             flash("Comment cannot be larger than 120 characters")
         return redirect ('/')
 

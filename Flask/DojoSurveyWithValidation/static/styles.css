@@ -1,0 +1,40 @@
+.wrapper {
+    width: 50%;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    color: blue;
+    text-align: center;
+}
+
+.error {
+    color: red;
+}
+
+form {
+    border: 1px solid black;
+    padding: 20px 20px 60px;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 10px 0;
+    clear: both;
+}
+
+input, select {
+    width: 250px;
+    height: 25px;
+    float: right;
+}
+
+p {
+    margin: 15px 0 0 0;
+}
+
+#submit {
+    width: 80px;
+    margin: 20px 155px;   
+}

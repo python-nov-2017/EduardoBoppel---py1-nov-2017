@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+    
+        <h1>Coding Dojo Survey</h1>
+
+        <form action="/result" method="post">
+        
+        <fieldset>
+            <label for="name">Your Name:</label>
+            <input type="text" name="name">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.startswith('Name') %}
+                            <p class="error">{{ message }} </p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+        </fieldset>
+
+        <fieldset>
+            <label for="location">Dojo Location:</label>
+            <select name="location">
+                <option value="online">Online</option>
+                <option value="sf">San Francisco</option>
+                <option value="sj">San Jose</option>
+                <option value="dallas">Dallas</option>
+                <option value="chicago">Chicago</option>
+            </select>
+        </fieldset>
+        
+        <fieldset>
+            <label for="language">Favorite Language:</label>
+            <select name="language">
+                <option value="python">Python</option>
+                <option value="js">Javascript</option>
+                <option value="java">Java</option>
+                <option value="ruby">Ruby</option>
+                <option value="php">PHP</option>
+                <option value="c">C</option>
+            </select>
+        </fieldset>
+
+        <p>Comment (optional):</p>
+        <textarea name="comment"cols="67" rows="10"></textarea>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.startswith('Comment') %}
+                        <p class="error">{{ message }} </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <input type="submit" id="submit" name="submit" value"Submit">
+        </form>
+
+    </div>
+</body>
+</html>

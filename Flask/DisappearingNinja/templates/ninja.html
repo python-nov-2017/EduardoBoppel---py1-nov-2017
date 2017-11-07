@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>TMNT</title>
+</head>
+<body>    
+    {% if not color  %}
+        <div class="images">
+            <img class="all" src="{{ url_for('static', filename='images/donatello.jpg') }}">
+            <img class="all" src="{{ url_for('static', filename='images/leonardo.jpg') }}">
+            <img class="all" src="{{ url_for('static', filename='images/michelangelo.jpg') }}">
+            <img class="all" src="{{ url_for('static', filename='images/raphael.jpg') }}">
+        </div>
+    {% endif %}
+
+    {% if color %}
+        {% if color == "purple" %}
+            <img src="{{ url_for('static', filename='images/donatello.jpg') }}">
+        {% endif %}
+
+        {% if color == "blue" %}
+            <img src="{{ url_for('static', filename='images/leonardo.jpg') }}">
+        {% endif %}
+        
+        {% if color == "orange" %}
+            <img src="{{ url_for('static', filename='images/michelangelo.jpg') }}">
+        {% endif %}
+        
+        {% if color == "red" %}
+            <img src="{{ url_for('static', filename='images/raphael.jpg') }}">
+        {% endif %}
+    
+        {% if (color != "purple") and (color != "blue") and (color != "orange") and (color != "red") %}
+            <img src="{{ url_for('static', filename='images/notapril.jpg') }}">
+        {% endif %}
+    {% endif %}
+
+</body>
+</html>

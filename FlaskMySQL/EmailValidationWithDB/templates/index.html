@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>New Email Address</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename="styles.css") }}">
+</head>
+<body>
+    <h1>Enter a new email address</h1>
+    
+    <form action="/add" method="post">
+        <label for="email"><input type="text" name="email" id="emailinput"></label>
+        <input type="submit" value="Add Email">
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="error">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+</body>
+
+</html>

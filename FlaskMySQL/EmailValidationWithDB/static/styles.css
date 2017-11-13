@@ -1,0 +1,44 @@
+body {
+    background-color: lightyellow;
+    text-align: center;
+}
+
+.wrapper {
+    width: 75%;
+    margin: 0 auto;
+}
+.row {
+    border: 0.5px solid black;
+    border-collapse: collapse;
+}
+
+#emailinput {
+    width: 300px;
+}
+
+.email, .date, form {
+    display: inline-block;
+}
+
+.email {
+    width: 400px;
+    color: red;
+}
+
+.date {
+    width: 200px;
+}
+
+.message {
+    margin: 0 auto;
+    color: lightseagreen;
+}
+
+.error {
+    color: red;
+}
+
+.return {
+    margin-top: 20px;
+    width: 140px;
+}

@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/********** TABLE ***********/
+table {
+    width: 80%;
+    margin: 25px auto 40px;
+    border-collapse: collapse;
+}
+
+    th, td {
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        padding: 12px 10px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:nth-child(even) { background-color: #f2f2f2; }
+    tr:hover { background-color: #cabfbf; }
+
+/********** FORMS ***********/
+form { display: inline-block; }
+
+    form label {
+        display: block;
+        margin: 10px 20px;
+        font-weight: 800;
+    }
+
+    .formfield {
+        width: 250px;
+        height: 20px; }
+
+
+    /* BUTTONS */
+    .btn {
+        background-color:lightslategray;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer; }
+        .action { width: 50px; }
+        .form { width: 70px; }
+
+
+    /* ADD FRIEND FORM */
+    #addfriend { margin-top: 20px; }
+        
+    /* EDIT FRIEND FORM */
+    #editfriend { margin-top: 20px;}
+
+    .error, .form-error { color: red; }
+    .success, .form-success { color: green; }
+    
+    p.success {
+        display: inline-block;
+        margin-top: -40px;
+        width: 40%;
+        height: 30px;
+        font-size: 20px;
+        text-align: center;
+        vertical-align: middle;
+        background-color: rgb(52, 146, 52);
+        color: white;
+    }
+
+
+.wrapper {
+    width: 80%;
+    margin: 50px auto;
+    text-align: center;
+}

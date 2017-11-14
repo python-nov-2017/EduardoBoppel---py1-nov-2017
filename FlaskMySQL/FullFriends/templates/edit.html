@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename="styles.css")}}">
+    <title>Edit Friend</title>
+</head>
+<body>
+
+    <div class="wrapper">
+        <h1>Edit Friend Information:</h1>
+        <form id = "editfriend" action="{{ url_for('update', id = friend['id']) }}" method="post">
+            <label for="first_name">First Name:<input class="formfield" type="text" name="first_name" value="{{ friend['first_name'] }}"></label>
+            <label for="last_name">Last Name:<input class="formfield" type="text" name="last_name" value="{{ friend['last_name'] }}"></label>
+            <label for="email">Email:<input class="formfield" type="text" name="email" value="{{ friend['email'] }}"></label>
+            <input class = "btn form" type="submit" value="Update">
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {% if category == "form-error" or category == "form-success" %}
+                            <p class = "{{category}}">{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+        </form>
+    </div>
+</body>
+</html>

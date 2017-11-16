@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+
+    <img src="{{ url_for('static', filename='images/homepage.png') }} " >
+
+    <div id="registration">
+        <h2>Register Now and Start Messaging!</h2>
+        <form action="/register" method="post">
+            <label for="first_name">First Name: 
+            {% with messages = get_flashed_messages(category_filter=["first_name"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span class="error">{{ message }}</span>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <input class="formfield" type="text" name="first_name"> </label>
+            
+            <label for="last_name">Last Name:
+            {% with messages = get_flashed_messages(category_filter=["last_name"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span class="error">{{ message }}</span>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <input class="formfield" type="text" name="last_name"> </label>
+            
+            <label for="email">Email: 
+            {% with messages = get_flashed_messages(category_filter=["email"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span class="error">{{ message }}</span>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <input class="formfield" type="text" name="email"> </label>
+
+            <label for="password">Password:
+            {% with messages = get_flashed_messages(category_filter=["password"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span class="error">{{ message }}</span>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <input class="formfield" type="text" name="password"> </label>
+            
+            <label for="password_conf">Confirm Password: 
+            {% with messages = get_flashed_messages(category_filter=["password_confirm"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span class="error">{{ message }}</span>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <input class="formfield" type="text" name="passwordconf"> </label>
+            
+            <input class = "btn" type="submit" value = "Register">
+        </form>
+    </div>
+
+</main>
+
+
+
+
+{% endblock %}

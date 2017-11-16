@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+    <h2>{{ user['first_name'] }} {{ user['last_name'] }} Wall</h2>
+    
+    <div id="wall">
+        <form action="/postmessage" method="post">
+            <textarea class="message" name="message" cols="50" rows="7"></textarea>
+            <input type="submit" value="Post Message">
+        </form>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    <div class="message_header">
+                        <p>From: {{ message['sender'] }}</p>
+                        <p class="time">Posted at: {{ message['created_at'] }}</p>
+                    </div>
+                    <p class="message_content">{{ message['message'] }}</p>
+                    
+                    {% if comments %}
+                        {% for comment in comments %}
+                            {% if comment['message_id'] == message['id'] %}
+                                <div class="comment">
+                                    <div class="comment_header">
+                                        <p>From: {{ comment['sender'] }}</p>
+                                        <p class="time">Posted at: {{ comment['created_at'] }}</p>
+                                    </div>
+                                    <p class="comment_content">{{ comment['comment'] }}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+
+                    <form class="form-comment" action="{{ url_for('postcomment', id=message['id']  ) }}" method="post">
+                        <textarea class="comment" name="comment" cols="30" rows="2"></textarea>
+                        <input class="btn-comment" type="submit" value="Post Comment">
+                    </form>
+                </div>
+                
+            {% endfor %}
+        {% endif %}
+
+    </div>
+
+    <div id="users">
+        <h4>Users:</h4>
+        <ul>
+            {% if all_users %}
+                {% for user in all_users %}
+                    <li><a href="{{ url_for('home', id=user['id']) }}">{{ user['username'] }}</a></li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+
+</main>
+
+
+
+{% endblock %}

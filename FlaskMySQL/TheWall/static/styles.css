@@ -1,0 +1,138 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/************** HEADER AND FOOTER (BASE.HTML) *****************/
+header {
+    background-color: rgb(42, 139, 214);
+    margin-bottom: 25px;
+    height: 40px;
+    padding: 25px;
+}
+
+    header h1, #account { 
+        display: inline-block; 
+        color: white;
+    }
+    #account p { 
+        display: inline-block;
+        font-weight: bold;
+        font-size: 22px;
+        margin-left: 540px; }
+
+    #account form { 
+        display: inline-block;
+        margin-left: 90px; 
+    }
+
+    #login {
+        display: inline-block;
+        position: relative;
+        margin: -8px 0 0 520px;   
+    }
+    #login .formfield {
+        width: 250px;
+        height: 18px;
+        display: block;
+        margin: 5px 0;
+    }
+    #login .btn {
+        position: absolute;
+        right: -60px;
+        top: 36px;
+    }
+
+footer {
+    background-color: rgb(42, 139, 214);
+    height: 70px;
+}
+
+
+/************** REGISTRATION (INDEX.HTML) *****************/
+img {
+    width: 350px;
+    margin: 20px 100px;
+}
+
+#registration {
+    display: inline-block;
+    width: 40%;
+    vertical-align: top;
+    margin: 30px 0 0 50px;
+}
+#registration label {
+    display: block;
+    margin-top: 15px;
+}
+
+#registration input {
+    display: block;
+}
+
+#registration .formfield {
+    width: 360px;
+    height: 20px;
+}
+
+
+/************** WALL (HOME.HTML) *****************/
+
+main {
+    width: 90%;
+    margin: 0 auto;
+    min-height: 430px;
+}
+
+#wall {
+    width: 79%;
+    display: inline-block;
+}
+    .message { width: 100%; }
+    .comment { width: 75%; }
+
+    .message{ margin: 20px 0; }
+        .message_header { 
+            clear: both;
+            background-color: rgb(248, 226, 164);
+            margin-bottom: 5px;
+        }
+        .message_content {
+            margin-left: 15px;
+        }
+
+        .message_header p, .comment_header p { display: inline-block; }
+        .time { float: right; }
+    
+
+    .comment{ margin: 20px 35px; }
+        .comment_header { 
+            clear: both;
+            background-color: lightgray;
+        }
+
+
+#users {
+    width: 15%;
+    display: inline-block;
+    margin: 20px 0 0 40px;
+    vertical-align: top;
+}
+    #users ul {
+        list-style: none;
+    }
+
+
+.form-comment { position: relative; }
+
+    .btn-comment {
+        position: absolute;
+        top: 25px;
+        right: 70px;
+
+    }
+
+.error {
+    color: red;
+}

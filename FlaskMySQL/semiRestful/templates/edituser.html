@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<main>
+
+    <h1>Edit User: {{ user['full_name'] }}</h1>
+
+    <form action="{{ url_for('update', id=user['id']) }}" method="post">
+        <input type="text" name="full_name" onfocus="this.value=''" value="{{ user['full_name'] }}">
+        <input type="text" name="email" onfocus="this.value=''" value="{{ user['email'] }}">
+        <input type="submit" value="Update User">
+    </form>
+
+    <a href="{{ url_for('show', id=user['id']) }}">Show User</a>
+
+</main>
+
+{% endblock %}

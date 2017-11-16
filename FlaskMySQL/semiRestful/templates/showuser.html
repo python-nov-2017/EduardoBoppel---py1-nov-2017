@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+
+    <h1>User: {{ user['full_name'] }}</h1>
+
+    <p>Full Name: {{ user['full_name'] }}</p>
+    <p>Email: {{ user['email'] }}</p>
+    <p>Created at: {{ user['crated_at'] }}</p>
+    <p>Last Updated: {{ user['updated_at'] }}</p>
+
+    <a href="{{ url_for('edit', id=user['id'] ) }}">Edit User</a>
+    <a href="{{ url_for('destroy', id=user['id']) }}">Delete User</a>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+    <table>
+        <thead>
+            <th>id</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% if users %}
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user['id'] }} </td>
+                        <td><a href="{{ url_for('show', id=user['id']) }}"> {{ user['full_name'] }} </a></td>
+                        <td>{{ user['email'] }} </td>
+                        <td>{{ user['created_at'] }} </td>
+                        <td>
+                            <a href="{{ url_for('show', id=user['id']) }}">Show</a>
+                            <a href="{{ url_for('edit', id=user['id']) }}">Edit</a>
+                            <a href="{{ url_for('destroy', id=user['id']) }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('new') }}">Add New User</a>
+
+</main>
+
+
+
+{% endblock %}

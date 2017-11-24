@@ -16,15 +16,10 @@
 
     <div class="string">{{ string }}</div>
 
-    <form id="generate" action="/generate_number" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Generate">
-    </form>
-
-    <form id="reset" action="/reset" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Reset">
-    </form>
+    <div class="buttons">
+        <a href="/generate_number"><button>Generate</button></a>
+        <a href="/reset"><button>Reset</button></a>
+    </div>
 
 </body>
 </html>

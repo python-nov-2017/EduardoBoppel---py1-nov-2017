@@ -1,0 +1,17 @@
+* {
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.string {
+    display: inline-block;
+    width: 50%;
+    padding: 30px;
+    min-height: 45px;
+    margin: 30px auto;
+    border: 1px solid black;
+    font-size: 40px;   
+}

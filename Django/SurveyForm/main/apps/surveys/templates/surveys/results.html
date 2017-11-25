@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'surveys/css/styles.css' %} ">
+
+    <title>Results</title>
+</head>
+<body>
+    <p>Thank you for submitting this form! You have submitted this form {{request.session.attempts}} times now</p>
+    
+    <div class='results'>
+        <p>Name: {{ request.session.name }}</p>
+        <p>Location: {{ request.session.location }}</p>
+        <p>Language: {{ request.session.language }}</p>
+        <p>Comment: {{ request.session.comment }}</p>
+    </div>
+
+</body>
+</html>

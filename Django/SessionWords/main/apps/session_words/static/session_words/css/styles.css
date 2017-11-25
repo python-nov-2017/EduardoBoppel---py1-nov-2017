@@ -1,0 +1,51 @@
+body {
+    background-color: lightgray;
+    padding: 20px;
+}
+
+.left, .right {
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+}
+
+input[type="text"] {
+    display: block;
+    width: 400px;
+    height: 20px;
+    margin-bottom: 15px;
+}
+
+input[type="checkbox"] {
+    margin: 20px 0;
+}
+
+.right {
+    margin-top: 20px;
+    border-left: 1px solid black;
+    padding: 40px 0 0 20px;
+    position: relative;
+}
+
+.right a {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    border: 1px solid black;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 10px;
+    background-color: orange;
+    text: white;
+}
+
+.right p {
+    margin-left: 5px;
+}
+
+
+.red { color: red; }
+.green { color: green; }
+.blue { color: blue; }
+.big { font-size: 30px; }

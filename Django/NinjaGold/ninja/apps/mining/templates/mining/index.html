@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mining/css/styles.css'%}">
+
+    <title>Ninja Gold</title>
+</head>
+<body>
+    <h1>Welcome to Ninja Gold!</h1>
+
+    <p>Your total gold: {{request.session.total}}</p>
+
+
+    <div class="place">
+        <h2>Farm</h2>
+        <p>(earns 10-20 golds)</p>
+        <form action="/process_gold/farm" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Find Gold!">
+        </form>
+    </div>
+    <div class="place">
+        <h2>Cave</h2>
+        <p>(earns 5-10 golds)</p>
+        <form action="/process_gold/cave" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Find Gold!">
+        </form>
+    </div>
+    <div class="place">
+        <h2>House</h2>
+        <p>(earns 2-5 golds)</p>
+        <form action="/process_gold/house" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Find Gold!">
+        </form>
+    </div>
+    <div class="place">
+        <h2>Casino</h2>
+        <p>(earns/takes 0-50 golds)</p>
+        <form action="/process_gold/casino" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Find Gold!">
+        </form>
+    </div>
+
+    <p class="title">Activities</p>
+    <div id="log">
+        {% if request.session.log %}
+            {% for entry in request.session.log %}
+                <p class="{{entry.luck}}">{{ entry.result }}</p>
+            {% endfor%}
+        {% endif %}
+    </div>
+
+</body>
+</html>

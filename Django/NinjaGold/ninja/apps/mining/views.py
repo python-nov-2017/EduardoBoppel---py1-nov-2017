@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 import random
-import datetime
+from datetime import datetime
 
 def index(request):
     return render(request, 'mining/index.html')
@@ -12,15 +12,13 @@ def process_gold(request, place):
     if place == "casino": won = random.randrange(-51, 51)
     luck = "Earned" if won >= 0 else "Lost"
 
-    newentry = dict(result = "{}:  {} {} golds from the {}!".format(datetime.datetime.now(), luck, won, place), luck=luck)    
+    newentry = dict(result = "{}:  {} {} golds from the {}!".format(datetime.now().strftime("%Y/%m/%d %-I:%M%p"), luck, won, place), luck=luck)    
     log = request.session.setdefault('log', [])
     log.insert(0, newentry)
     request.session['log'] = log
 
-
     request.session['total'] = request.session.setdefault('total', 0) + won
 
-    
     return redirect('/')
 
 

@@ -9,16 +9,13 @@ def checkout(request):
     return render(request, 'cart/checkout.html')
 
 
-def process_order(request):
-    product_id = int(request.POST['product_id'])
-    quantity = int(request.POST['quantity'])
-    
+def process_order(request):    
     for product in load_products("search"):
-        if product['id'] == product_id:    
-            price = product['price']
-    
-    request.session['order_total'] = price * quantity
-    request.session['total_items'] = request.session.setdefault('total_items', 0) + quantity
+        if product['id'] == int(request.POST['product_id']):
+            request.session['order_total'] = product['price'] * int(request.POST['quantity'])
+            break
+
+    request.session['total_items'] = request.session.setdefault('total_items', 0) + int(request.POST['quantity'])
     request.session['total_spent'] = request.session.setdefault('total_spent', 0) + request.session['order_total']
 
     return redirect('/checkout')

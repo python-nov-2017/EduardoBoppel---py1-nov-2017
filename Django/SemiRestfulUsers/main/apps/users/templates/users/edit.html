@@ -1,0 +1,17 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+<h1>Edit User</h1>
+
+
+
+
+<form action="/{{id}}/update" method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Edit User">
+</form>
+
+
+{% endblock %}

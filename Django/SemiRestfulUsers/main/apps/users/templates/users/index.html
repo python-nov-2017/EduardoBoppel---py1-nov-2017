@@ -1,0 +1,43 @@
+{% extends 'users/base.html' %}
+    
+{% block content %}
+    <h1>Users</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>email</th>
+                <th>Joined</th>
+                <th>Last Update</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if users %}
+                {% for user in users %}
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.first_name}}</td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.created_at}}</td>
+                        <td>{{user.upated_at}}</td>
+                        <td>
+                            <a href="/users/{{user.id}}">Show</a>
+                            <a href="/users/{{user.id}}/edit">Edit</a>
+                            <a href="{%url 'destroy' id=user.id %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+
+    
+    <a href="{% url 'users:new' %}">Add a new user</a>
+    <!-- <a href="/users/new">Add a new user</a> -->
+
+{% endblock %}

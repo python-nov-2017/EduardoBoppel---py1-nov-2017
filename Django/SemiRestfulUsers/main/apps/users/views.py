@@ -30,27 +30,19 @@ def show(request, id):
 
 def edit(request, id):
     user = User.objects.get(id=id)
-    form = UserForm(initial={ 
-                            'first_name': user.first_name,
-                            'last_name': user.last_name,
-                            'email': user.email
-                            })
-    return render(request, 'users/edit.html', {'form': form, 'id': id} )
-    pass
+    form = UserForm(instance=user)
+    print form
+    return render(request, 'users/edit.html', {'form': form, 'id':id } )
+    
 
 
 def update(request, id):
     user = User.objects.get(id=id)
     form = UserForm(request.POST, instance=user)
-    print form
-    if form.is_valid():
-        user.email = form.cleaned_data['email']
-        user.first_name = form.cleaned_data['first_name']
-        user.last_name = form.cleaned_data['last_name']
-        user.save()
+    if form.is_valid(): 
+        form.save()
         return redirect('/users/{}'.format(id))
     else:
-        print "error saving"
         return redirect('/users/{}/edit'.format(id))
 
     

@@ -1,0 +1,31 @@
+{% extends 'courses/base.html' %}
+
+{% block title %} <title>Course Comments</title> {%endblock%}
+
+{% block content %}
+
+
+    <H1>Course Information</H1>
+    <h3>Course Name: {{course.name}} </h3>
+    <h3>Instructor: {{course.instructor}}</h3>
+    <!-- <h3>Description: {{course.desc}}</h3> HOW TO IMPORT DESCRIPTION-->
+
+    <h2>Comments:</h2>
+
+    {% if comments %}
+        {% for comment in comments %}    
+            <p><span>{{comment.user.first_name}} {{comment.user.last_name}}: </span> {{ comment.comment }} </p>
+        {% endfor %}
+    {% endif %}
+
+
+    <form action="/{{id}}/addcomment" method="post">
+        {% csrf_token %}
+        <input type="text" name="comment">
+        <input type="submit" value="Add Comment">
+    </form>
+
+    <a class="btn btn-primary" href="/">Back to Courses</a>
+
+{% endblock %}
+

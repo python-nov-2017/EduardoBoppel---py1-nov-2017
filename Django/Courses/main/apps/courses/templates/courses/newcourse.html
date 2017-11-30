@@ -1,0 +1,36 @@
+{% extends 'courses/base.html' %}
+
+{% block title %} <title>Add Course</title> {%endblock%}
+
+{% block content %}
+
+
+    {% if id %}
+        <h1>Edit Course</h1>
+        <form action="/{{id}}/updatecourse" method="post">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Edit Course">
+        </form>
+    
+    {% else %}
+        <h1>Add New Course</h1>
+
+        <form action="/createcourse" method="post">
+            {% csrf_token %}
+            {{form.name.id_for_label}}
+            {{form.name}}
+            {{form.instructor.id_for_label}}
+            {{form.instructor}}
+            {{form.desc.id_for_label}}
+            {{form.desc}}
+            <input type="submit" value="Add Course">
+        </form>
+    
+    {% endif %}
+
+
+    <a class="btn btn-primary" href="/">Cancel</a>
+
+{% endblock %}
+

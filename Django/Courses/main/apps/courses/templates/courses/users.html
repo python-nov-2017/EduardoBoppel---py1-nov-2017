@@ -1,0 +1,43 @@
+{% extends 'courses/base.html' %}
+
+{% block title %} <title>Users</title> {%endblock%}
+
+{% block content %}
+
+
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <th>Fist Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Member Since</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        {% if users %}
+            {% for user in users %}
+                <tr>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.created_at}</td>
+                    <td>
+                        <a href="{{user.id}}">Show</a>
+                        <a href="{{user.id}}/edit">Edit</a>
+                        <a href="{{user.id}}/delete">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+
+
+<a class="btn btn-warning" href="/users/adduser">Add New User</a>
+<a class="btn btn-primary" href="/">Back to Courses</a>
+
+
+{% endblock %}
+

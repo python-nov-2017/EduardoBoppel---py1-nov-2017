@@ -1,0 +1,39 @@
+{% extends 'courses/base.html' %}
+
+
+{% block title %} <title>Index</title> {% endblock title %}
+
+{% block content %}
+<h1>Courses</h1>
+
+<a class="btn btn-warning" href="/users">Users</a>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <th>Course Name</th>
+        <th>Instructor</th>
+        <th>Description</th>
+        <th>Date Added</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+            <tr>
+                <td>{{course.name}}</td>
+                <td>{{course.instructor.first_name}} {{course.instructor.last_name}}</td>
+                <td>{{course.description.desc}}</td>
+                <td>{{created_at}}</td>
+                <td>
+                    <a href="/{{course.id}}/editcourse">Edit</a>
+                    <a href="/{{course.id}}/deletecourse">Remove</a>
+                    <a href="/{{course.id}}/showcomments">Comments</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a class="btn btn-primary" href="/addcourse">Add New Course</a>
+
+
+{% endblock %}

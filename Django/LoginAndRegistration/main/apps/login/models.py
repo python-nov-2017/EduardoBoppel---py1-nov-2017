@@ -13,7 +13,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 #METHOD 1: VALIDATING THE FORM USING THE FORM MANAGER
 class UserManager(models.Manager):
-    def validator(self, postData):
+    def validate_registration(self, postData):
         errors = {}
         
         if len(postData['first_name']) < 2:
@@ -40,8 +40,35 @@ class UserManager(models.Manager):
             if postData['pass'] != postData['passconf']:
                 errors['password match'] = "Passwords must match"
 
+        if not errors:
+            hashpass = bcrypt.hashpw(postData['pass'].encode(), bcrypt.gensalt())
+            new_user = self.create(
+                first_name =  postData['first_name'],
+                last_name = postData['last_name'],
+                email = postData['email'],
+                birthday = postData['birthday'],
+                password = hashpass
+            )
+            return new_user
         return errors
-        
+    
+    def validate_login(self, postData):
+        errors = {}
+
+        try:
+            user = self.get(email=postData['email'])
+        except: 
+            errors['email'] = "Please enter a valid registered address"
+        else:
+            if not bcrypt.checkpw(postData['pass'].encode(), user.password.encode()):
+                errors['pass'] = "Please enter a valid password"
+                
+        if errors:
+            return errors
+        return user
+
+
+
 
 class User(models.Model):
     first_name = models.CharField(max_length=255, validators=[RegexValidator(regex='^[a-zA-Z]{2,}$', message='Field must be mimimum 2 characters and only letters', code='invalid_username'),])  
@@ -68,7 +95,6 @@ class NameField(forms.Field):
         if not value.isalpha():
             raise forms.ValidationError("Field must contain only letters")
             
-
 class RegistrationForm(forms.Form):
     first_name = NameField()                                                          #validate this field by creating a custom field
     last_name = forms.CharField(min_length=2, validators=[RegexValidator(regex='^[a-zA-Z]*$', message='Field must contain only letters', code='invalid_username'),])  #validate this field using built-in validators
@@ -108,6 +134,7 @@ class LoginForm(forms.Form):
         else:
             if not bcrypt.checkpw('password'.encode(), user.password.encode()):
                 self.add_error('password', "Please entere a valid password")
+
         
 
 

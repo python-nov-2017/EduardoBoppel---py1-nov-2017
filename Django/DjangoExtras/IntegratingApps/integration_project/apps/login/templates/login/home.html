@@ -1,0 +1,16 @@
+{% extends 'login/base.html' %}
+
+{% block title%} <title>Homepage</title> {% endblock %}
+
+{% block content %}
+    <h1>Homepage</h1>
+    <h2>Welcome {{request.session.email}}</h2>
+
+    <p>Successfully registered or logged in!</p>
+
+    <a href="/logout">Logout</a>
+
+
+
+
+{% endblock %}

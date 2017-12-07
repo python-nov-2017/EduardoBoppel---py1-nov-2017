@@ -1,0 +1,22 @@
+{% extends 'courses/base.html' %}
+
+{% block title %} <title>Show User</title> {%endblock%}
+
+{% block content %}
+
+
+<h1>User: {{user.first_name}}</h1>
+
+<p>{{user.first_name}}</p>
+<p>{{user.last_name}}</p>
+<p>{{user.email}}</p>
+
+<a class="btn btn-warning" href="/users/{{user.id}}/delete">Delete User</a>
+
+<a class="btn btn-warning" href="/users">All Users</a>
+
+
+
+
+
+{% endblock %}

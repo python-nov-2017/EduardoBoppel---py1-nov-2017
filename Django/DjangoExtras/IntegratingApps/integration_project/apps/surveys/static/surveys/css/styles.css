@@ -1,0 +1,33 @@
+body {
+    background-color lightgray;
+    text-align: center;
+}
+
+
+form {
+    display: inline-block;
+    width: 50%;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+form p {
+    display: inline-block;
+    width: 40%;
+    margin: 10px 20px;
+    text-align: left;
+}
+
+form input, form select {
+    width: 40%;
+}
+
+form textare {
+    width: 500px;
+}
+
+.results {
+    display: inline-block;
+    width: 40%;
+    border: 1px solid black;
+}

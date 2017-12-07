@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Time Display</title>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'timedisplay/css/styles.css' %}">
+</head>
+<body>
+
+    <h1>The current time and date:</h1>
+    
+    <div class="datebox">
+        <p>{{ date }}</p>    
+        <p>{{ time }}</p>    
+    </div>
+    
+</body>
+</html>

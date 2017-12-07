@@ -1,0 +1,15 @@
+* {
+    background-color: lightgray;
+}
+
+#checkout {
+    padding: 30px;
+}
+
+#checkout h1 {
+
+}
+
+#orderhistory {
+    margin: 80px 0;
+}

@@ -1,0 +1,22 @@
+{% extends 'registration/base.html' %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block content %} 
+
+    <h1>Register</h1>
+    <form action="{% url 'registration:register' %}" method="post">
+        {% csrf_token %}        
+        {{ regform.as_p }}
+        <input type="submit" value="Register">
+    </form>
+
+    <h1>Login</h1>
+    <form action="{% url 'registration:login' %}" method="post">
+        {% csrf_token %}        
+        {{ loginform.as_p }}
+        <input type="submit" value="Login">
+    </form>
+
+
+{% endblock %}

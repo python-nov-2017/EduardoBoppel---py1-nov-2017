@@ -1,0 +1,10 @@
+{% extends 'registration/base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <h1>Welcome</h1>
+
+
+    <a href="{% url 'registration:logout' %}">Logout</a>
+{% endblock %}

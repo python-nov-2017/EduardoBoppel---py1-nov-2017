@@ -1,0 +1,15 @@
+{% extends 'login/base.html' %}
+
+{% block title %} Home {% endblock%}
+
+{% block content%}
+    <h1>Welcome!</h1>
+
+    <h2>All registered users:</h2>
+    {% for user in allusers %}
+        <p>{{user.first_name}} {{user.last_name}}</p>
+    {% endfor%}
+
+    <a href="{% url 'loginapp:logout' %}">Logout</a>
+
+{% endblock%}

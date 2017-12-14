@@ -1,0 +1,26 @@
+.messagebox {
+    padding: 15px;
+    border: 1px solid black;
+    margin: 20px;
+    clear: both;
+}
+
+.message {
+    background-color: lightgray;
+    padding: 10px;
+}
+
+.commentbox {
+    margin: 25px 20px;
+    background-color: lightgoldenrodyellow;
+    clear: both;
+}
+
+
+.from {
+    font-size: 14px;
+}
+.date {
+    float: right;
+    font-size: 14px;
+}

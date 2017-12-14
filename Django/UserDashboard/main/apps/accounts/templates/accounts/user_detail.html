@@ -1,0 +1,25 @@
+{% extends 'accounts/base.html' %}
+
+
+{% block title %}My Account{% endblock %}
+
+{% block content %}
+
+<h1>My Account</h1>
+
+<h3>General Information:</h3>
+<p>Name: {{user.email}}</p>
+<p>First Name: {{user.first_name}}</p>
+<p>Last Name: {{user.last_name}}</p>
+
+
+<h3>Description</h3>
+<p>{{user.description}}</p>
+
+<h3>Permissions:</h3>
+<p>User Status: {{user.get_user_level}}</p>
+
+<p><a href="{%url 'accounts:user_edit' user.id %}">Edit My Account</a></p>
+<p><a href="{%url 'accounts:user_list' %}">Back To User Dashboard</a></p>
+
+{% endblock %}

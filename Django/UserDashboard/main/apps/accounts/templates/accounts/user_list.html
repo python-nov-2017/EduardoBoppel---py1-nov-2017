@@ -1,0 +1,63 @@
+{% extends 'accounts/base.html' %}
+
+
+{% block title %}User List{% endblock %}
+
+{% block content %}
+    <h1>Users</h1>
+
+    <a class="btn btn-primary" href="{{ user.get_absolute_url }}">View My Profile</a>
+    
+
+
+    {% if request.user.is_admin %}
+    <a class="btn btn-primary" href="{% url 'accounts:user_add' %}">Add New User</a>
+    {% endif %}
+    
+
+    
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Created At</th>
+                <th>User Level</th>
+                {% if request.user.is_admin %}
+                    <th>Actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td><a href="{{ user.get_messages_url }}">{{user.get_full_name}}</a></td>
+                <td>{{user.email}}</td>
+                <td>{{user.created_at}}</td>
+                <td>{{user.get_user_level}}</td>
+                {% if request.user.is_admin %}
+                    {% if request.user != user %}
+                    <td>
+                        <a href="{% url 'accounts:user_edit' user.id %}">Edit</a>
+                        <a href="{% url 'accounts:user_delete' user.id %}">Delete</a>
+                    </td>
+                    {% else %}
+                    <td>
+                        <p>This is you</p>
+                    </td>
+                    {% endif %}
+                {% endif %}
+
+            </tr>
+            {% empty %}
+                <p>No Registered Users</p>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

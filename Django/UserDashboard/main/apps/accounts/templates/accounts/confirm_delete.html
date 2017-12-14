@@ -1,0 +1,14 @@
+{% extends 'accounts/base.html' %}
+
+
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete {{ user.email }}?</p>
+        <input type="submit" value="Confirm">
+    </form>
+
+{% endblock %}

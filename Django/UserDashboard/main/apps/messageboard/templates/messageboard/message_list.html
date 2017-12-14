@@ -1,0 +1,59 @@
+{% extends 'messageboard/base.html' %}
+
+
+{% block title %}Message Board{% endblock %}
+
+{% block content %}
+
+    <a href="{% url 'accounts:user_list'%}" class="btn btn-primary">Back to User List</a>
+
+    <h3>{{ user.get_full_name }}</h3>
+    <p>Registered: {{ user.created_at }}</p>
+    <p>User ID: {{ user.id }}</p>
+    <p>Email Address: {{ user.email }}</p>
+    <p>Description: {{ user.description }}</p>
+        
+
+    <h5>Leave a Message for: {{ user.get_full_name }} </h5>
+        <form action="{%url 'messages:message_list' user.id %}" method="post">
+            {% csrf_token %}
+            {{ messageform }}
+            <input type="submit" value="Submit">
+        </form>
+
+        <!-- MESSAGE LIST -->
+        {% for message in messages %}
+        <div class="messagebox">
+            <span>From: {{message.from_id}}</span>
+            <span class="date">Date: {{message.created_at}}</span>
+            <p class="message">{{ message.message }}</p>
+        
+
+            <!-- COMMENT LIST -->
+            {% for comment in message.comments.all %}
+            <div class="commentbox">
+                <span class="from">From:{{comment.from_id}}</span>
+                <span class="date">Date: {{comment.created_at}}</span>
+                <p class="comment">{{comment.comment}}</p>
+            </div>
+            {% endfor %}        
+            
+            <!-- COMMENT FORM -->
+            <form action="{%url 'messages:post_comment' pk=user.id id=message.id %}" method="post">
+                    {% csrf_token %}
+                    {{ commentform }}
+                    <input type="submit" value="Submit">
+            </form>
+        
+        </div>
+    
+
+
+    {% empty %}
+        <p>No messages yet</p>
+    {% endfor %}
+    
+
+    
+
+{% endblock %}

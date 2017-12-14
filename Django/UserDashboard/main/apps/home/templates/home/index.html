@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+
+{% block title%}Welcome{% endblock%}
+
+{% block content %}
+    <h1>Welcome!</h1>
+
+    <a href="{% url 'accounts:register' %}">Register</a>
+    <a href="{% url 'accounts:login' %}">Login</a>
+
+    <div>
+        <a href="/admin">Admin</a>
+    </div>
+
+{% endblock %}

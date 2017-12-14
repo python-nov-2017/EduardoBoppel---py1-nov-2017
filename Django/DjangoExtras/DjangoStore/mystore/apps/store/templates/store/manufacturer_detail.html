@@ -1,0 +1,26 @@
+{% extends 'store/base.html' %}
+
+{%block title%}Manufacturer - Detail{%endblock%}
+
+{% block content %}
+    <h1>Manufacturer Detail View</h1>
+
+    <p>Name: {{manufacturer.name}}</p>
+    <p>Address: {{manufacturer.address}}</p>
+    <p>City: {{manufacturer.city}}</p>
+    <p>Country: {{manufacturer.country}}</p>
+    <p>Phone: {{manufacturer.phone}}</p>
+    <p>Email: {{manufacturer.email}}</p>
+    <p>Website: {{manufacturer.website}}</p>
+    <p>Created: {{manufacturer.created_at}}</p>
+    <p>Last Updated: {{manufacturer.updated_at}}</p>
+
+    <div>
+        <a href="{% url 'store:manufacturer_update' manufacturer.id %}">Edit</a>
+        <a href="{% url 'store:manufacturer_delete' manufacturer.id %}">Delete</a>
+    </div>  
+
+    <a href="{% url 'store:manufacturer_list' %}">All Manufacturers</a>
+    
+
+{% endblock %}

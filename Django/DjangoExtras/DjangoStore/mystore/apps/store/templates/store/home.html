@@ -1,0 +1,27 @@
+{% extends 'store/base.html' %}
+
+{%block title%}Store Homepage{%endblock%}
+
+{% block content %}
+
+<h1>Welcome</h1>
+
+<h2>Latest Offers:</h2>
+    <p>Offer 1</p>
+    <p>Offer 2</p>
+
+
+<h4>User Area</h4>
+<p><a href="/register">Create a New User</a></p>
+<p><a href="/accounts/login/">Login</a></p>
+
+
+<h4>Admin Area</h4>
+<a href="{% url 'store:manufacturer_list'%}">Manufacturers</a>    
+<a href="{% url 'store:product_list'%}">Products</a>
+
+
+<p><a href="/admin">Go to Admin</a></p>
+
+
+{% endblock %}

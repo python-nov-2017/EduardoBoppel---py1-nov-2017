@@ -1,0 +1,45 @@
+{% extends 'store/base.html' %}
+
+{%block title%}Manufacturer - List{%endblock%}
+
+{% block content %}
+    <h1>Manufacturer List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Website</th>
+                <th>Created</th>
+                <th>Last Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for manufacturer in manufacturers %}
+            <tr>
+                <td>{{ manufacturer.name}}</td>
+                <td>{{ manufacturer.phone}}</td>
+                <td>{{ manufacturer.email}}</td>
+                <td>{{ manufacturer.website}}</td>
+                <td>{{ manufacturer.created_at}}</td>
+                <td>{{ manufacturer.updated_at}}</td>
+                <td>
+                    <a href="{{ manufacturer.get_absolute_url }}">View</a>
+                    <a href="{% url 'store:manufacturer_update' manufacturer.id %}">Edit</a>
+                    <a href="{% url 'store:manufacturer_delete' manufacturer.id %}">Delete</a>
+                </td>
+            </tr>
+                {% empty %}
+                    <tr>No Manufacturers yet.</tr>
+                {% endfor %}
+        </tbody>
+    </table>
+
+    
+
+    <a href="{% url 'store:manufacturer_add' %}">Add Manufacturer</a>
+
+{% endblock %}

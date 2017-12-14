@@ -1,0 +1,45 @@
+{% extends 'store/base.html' %}
+
+{%block title%}Products - List{%endblock%}
+
+{% block content %}
+    <h1>Product List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Manufacturer</th>
+                <th>Price</th>
+                <th>On Stock</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name}}</td>
+                <td>{{ product.description}}</td>
+                <td>{{ product.manufacturer}}</td>
+                <td>{{ product.price}}</td>
+                <td>{{ product.on_stock}}</td>
+                <td>{{ product.is_active}}</td>
+                <td>
+                    <a href="{{ product.get_absolute_url }}">View</a>
+                    <a href="{% url 'store:product_update' product.id %}">Edit</a>
+                    <a href="{% url 'store:product_delete' product.id %}">Delete</a>
+                </td>
+            </tr>
+                {% empty %}
+                    <tr>No Products yet.</tr>
+                {% endfor %}
+        </tbody>
+    </table>
+
+    
+
+    <a href="{% url 'store:product_add' %}">Add Product</a>
+
+{% endblock %}

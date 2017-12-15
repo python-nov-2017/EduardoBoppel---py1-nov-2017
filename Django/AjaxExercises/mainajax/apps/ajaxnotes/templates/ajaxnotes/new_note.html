@@ -1,0 +1,14 @@
+<div class="note" id="{{note.id}}">
+    <h5 class="title">Title: {{note.title}}</h5>    
+    <a class="delete_note" href="{% url 'ajaxnotes:delete_note' note.id %}">Delete</a>
+    
+
+    <p class="description_field" class="description">{{ note.description }}</p>
+    
+    <form action="{% url 'ajaxnotes:add_description' note.id %}" method="post" class="description_form" {% if note.description %}style="display:none"{% endif %}>
+        {% csrf_token %}
+        <textarea name="note_description" cols="40" rows="5"></textarea>
+        <button type="submit">Add Description</button>
+    </form>
+    
+</div>

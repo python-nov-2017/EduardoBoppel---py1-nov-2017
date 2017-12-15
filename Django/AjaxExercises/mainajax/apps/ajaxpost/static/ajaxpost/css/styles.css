@@ -1,0 +1,11 @@
+
+
+.col-6, .col-sm-3 {
+    border: 1px solid red;
+    margin: 20px 10px;
+}
+
+
+#newpost {
+    margin-left: 100px;
+}

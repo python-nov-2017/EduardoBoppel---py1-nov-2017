@@ -1,0 +1,40 @@
+body {
+    background-color: lightcyan;
+}
+
+
+
+#filters {
+    width: 90%;
+    margin: 0 auto;
+}
+    #filters form{
+        display: inline-block;
+        margin: 0 15px;
+    }
+
+
+#results {
+    width: 80%;
+    margin: 50px auto;
+    clear: both;
+    border: 1px solid black;
+}
+    .pagination {
+        float: right;
+    }
+        .pagination a {
+            margin-right: 4px;
+            
+        }
+        .pagination a:last-child {
+            margin-right: 30px;
+        }
+
+
+#leadcreate {
+    padding: 15px;
+    margin: 0 auto;
+    width: 80%;
+    border: 1px solid black;
+}

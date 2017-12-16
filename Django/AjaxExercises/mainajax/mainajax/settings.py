@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.ajaxnotes',
     'apps.ajaxpagination',
-    'apps.ajaxpost'
+    'apps.ajaxpost',
+    'apps.musicvideos'
 
 ]
 

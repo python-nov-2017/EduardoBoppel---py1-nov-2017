@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^ajaxnotes/', include('apps.ajaxnotes.urls', namespace="ajaxnotes")),
     url(r'^ajaxpagination/', include('apps.ajaxpagination.urls', namespace="ajaxpagination")),
     url(r'^ajaxpost/', include('apps.ajaxpost.urls', namespace="ajaxpost")),
+    url(r'^musicvideos/', include('apps.musicvideos.urls', namespace="musicvideos")),
     url(r'^admin/', admin.site.urls),
 ]

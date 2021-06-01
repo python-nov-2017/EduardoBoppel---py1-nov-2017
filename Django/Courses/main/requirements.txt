@@ -22,6 +22,6 @@ requests==2.18.4
 six==1.11.0
 South==1.0.2
 tinycss2==0.6.1
-urllib3==1.22
+urllib3==1.26.5
 vine==1.1.4
 webencodings==0.5.1
